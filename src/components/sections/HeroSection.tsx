@@ -1,18 +1,17 @@
 // src/components/sections/HeroSection.tsx
 import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import { CheckCircle, Smartphone, Zap } from 'lucide-react'
+import { CheckCircle, Smartphone, TrendingUp } from 'lucide-react'
+import Link from 'next/link'
 
-export function HeroSection() {
+interface HeroSectionProps {
+  onOpenContactForm: () => void
+}
+
+export function HeroSection({ onOpenContactForm }: HeroSectionProps) {
   return (
     <section className="bg-gradient-to-br from-blue-50 to-indigo-100 py-20 lg:py-32">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">
-          {/* Trust Badge */}
-          <Badge variant="success" className="mb-6 text-sm px-4 py-2">
-            ✓ Trusted by local businesses
-          </Badge>
-          
           {/* Main Headline */}
           <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
             Modern Websites,{' '}
@@ -33,13 +32,15 @@ export function HeroSection() {
           </p>
           
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button size="lg" className="text-lg px-8 py-3">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+            <Button 
+              size="lg" 
+              className="text-lg px-8 py-3 hover:scale-105 transition-transform shadow-lg"
+              onClick={onOpenContactForm}
+            >
               Get Your Free Quote
             </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8 py-3">
-              View Our Work
-            </Button>
+
           </div>
           
           {/* Trust Signals */}
@@ -49,14 +50,15 @@ export function HeroSection() {
               <span className="text-sm font-medium">Mobile-friendly design</span>
             </div>
             <div className="flex items-center justify-center gap-2 text-gray-600">
-              <Zap className="h-5 w-5 text-blue-600" />
-              <span className="text-sm font-medium">Fast loading</span>
+              <CheckCircle className="h-5 w-5 text-blue-600" />
+              <span className="text-sm font-medium">Fully done for you</span>
             </div>
             <div className="flex items-center justify-center gap-2 text-gray-600">
-              <CheckCircle className="h-5 w-5 text-blue-600" />
-              <span className="text-sm font-medium">Easy to update</span>
+              <TrendingUp className="h-5 w-5 text-blue-600" />
+              <span className="text-sm font-medium">Drives real results</span>
             </div>
           </div>
+
         </div>
       </div>
     </section>
