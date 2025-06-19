@@ -1,140 +1,135 @@
 // src/components/sections/ProblemSolutionSection.tsx
 import {
-  EyeOff,
+  Search,
   ThumbsDown,
   Hourglass,
+  CheckCircle,
+  Smartphone,
   MapPin,
-  ShieldCheck,
-  Rocket,
-  ArrowDown,
-} from 'lucide-react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export function ProblemSolutionSection() {
   const problems = [
     {
-      icon: EyeOff,
-      title: 'Invisible Online',
-      description: 'Customers can’t find you online — and choose someone else who does.',
+      icon: Search,
+      title: "You’re Invisible When Customers Search",
+      description:
+        "No website means you don’t show up on Google — so they call someone else.",
     },
     {
       icon: ThumbsDown,
-      title: 'Lost Credibility',
-      description: 'Without a website, your business looks outdated or untrustworthy.',
+      title: "You Don’t Look Legit",
+      description:
+        "No website makes your business seem shady — even if you do great work.",
     },
     {
       icon: Hourglass,
-      title: 'Stuck Without a Site',
-      description: 'You’ve put it off for months — and it’s quietly costing you new customers.',
+      title: "Every Day You Wait, You’re Losing Jobs",
+      description:
+        "You’ve put it off long enough. No site = missed calls and lost money.",
     },
-  ]
+  ];
 
-  const benefits = [
+  const features = [
+    {
+      icon: CheckCircle,
+      title: "5 Pages That Sell What You Do",
+      description:
+        "We write and build them to bring in real leads — not just fill space.",
+    },
+    {
+      icon: Smartphone,
+      title: "Looks Good on Any Phone",
+      description:
+        "Most customers look you up on mobile. Your site will look sharp and work fast.",
+    },
     {
       icon: MapPin,
-      title: 'Get Found Easily',
-      description: 'Bring in more customers from local search.',
-      fear: 'Show up when they search — not your competitors.',
+      title: "Customers Can Reach You Instantly",
+      description:
+        "We set up your contact form, Google Map, and domain — no tech skills needed.",
     },
-    {
-      icon: ShieldCheck,
-      title: 'Instant Credibility',
-      description: 'Make the right impression at first glance.',
-      fear: 'Build trust from the moment they land on your site.',
-    },
-    {
-      icon: Rocket,
-      title: 'Simple, Quick Launch',
-      description: 'We handle the details and get your site live in days.',
-      fear: 'No more delays or confusion holding you back.',
-    },
-  ]
+  ];
 
   return (
     <section className="py-16 lg:py-24 bg-white">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
-          {/* Emotional Hook */}
+          {/* Section Title */}
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Your Website Is Costing You Customers
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              The Problem (Credibility Killers)
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Every day without a professional website, potential customers are choosing your competitors instead.
+              No website? That’s what’s costing you calls, jobs, and trust.
             </p>
           </div>
 
-          {/* Problems Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          {/* Problems */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
             {problems.map((problem, index) => {
-              const IconComponent = problem.icon
+              const IconComponent = problem.icon;
               return (
-                <Card
+                <div
                   key={index}
-                  className="text-center hover:shadow-lg transition-all duration-300 border-gray-200 bg-white relative"
+                  className="text-center p-6 border rounded-lg bg-white shadow-sm hover:shadow-md transition-all"
                 >
-                  <CardHeader>
-                    <div className="mx-auto w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-4">
-                      <IconComponent className="h-8 w-8 text-red-600" />
-                    </div>
-                    <CardTitle className="text-xl text-gray-900">{problem.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-600 mb-2">{problem.description}</p>
-                  </CardContent>
-                </Card>
-              )
+                  <div className="mx-auto w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-4">
+                    <IconComponent className="h-8 w-8 text-red-600" />
+                  </div>
+                  <h4 className="text-xl font-semibold text-gray-900 mb-2">
+                    {problem.title}
+                  </h4>
+                  <p className="text-gray-600 text-sm">{problem.description}</p>
+                </div>
+              );
             })}
           </div>
 
-          {/* Connecting Bridge */}
-          <div className="text-center mb-4">
-            <p className="text-lg text-gray-700 font-medium">
-              That’s why we built SharpSite — to eliminate every one of these problems.
+          {/* Transition Text */}
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <p className="text-xl text-gray-900 font-semibold mb-2">
+              We fix all three problems — fast.
+            </p>
+            <p className="text-xl text-gray-700">
+              Your site goes live in 5–7 days. One flat $950.
             </p>
           </div>
 
-          {/* Gentle Transition */}
-          <div className="text-center mb-6">
-            <div className="inline-flex items-center gap-3 text-gray-600">
-              <div className="w-16 h-px bg-gray-300"></div>
-              <ArrowDown className="h-5 w-5 text-blue-600" />
-              <div className="w-16 h-px bg-gray-300"></div>
-            </div>
-          </div>
-
-          {/* Solution Statement */}
-          <div className="text-center max-w-4xl mx-auto">
-            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              We Handle Everything So You Don’t Have To
-            </h3>
-
-            <p className="text-xl text-gray-600 mb-10 leading-relaxed">
-              Professional websites with a straightforward process, transparent pricing,
-              and reliable results — without the headaches.
-            </p>
-
-            {/* Fear-Solving Benefits */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {benefits.map((benefit, index) => {
-                const IconComponent = benefit.icon
-                return (
-                  <div key={index} className="text-center">
-                    <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <IconComponent className="h-8 w-8 text-blue-600" />
-                    </div>
-                    <h4 className="font-semibold text-gray-900 mb-2">{benefit.title}</h4>
-                    <p className="text-gray-600 text-sm mb-2">{benefit.description}</p>
-                    <p className="text-blue-700 text-xs font-medium italic">
-                      {benefit.fear}
-                    </p>
+          {/* Features */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-14">
+            {features.map((feature, index) => {
+              const IconComponent = feature.icon;
+              return (
+                <div
+                  key={index}
+                  className="text-center p-6 border rounded-lg bg-gray-50 shadow-sm hover:shadow-md transition-all"
+                >
+                  <div className="mx-auto w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                    <IconComponent className="h-8 w-8 text-blue-600" />
                   </div>
-                )
-              })}
-            </div>
+                  <h4 className="text-lg font-semibold text-gray-900 mb-1">
+                    {feature.title}
+                  </h4>
+                  <p className="text-gray-600 text-sm">{feature.description}</p>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* CTA Button */}
+          <div className="text-center">
+            <Button
+              size="lg"
+              className="text-lg px-8 py-3 hover:scale-105 transition-transform shadow-lg"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            >
+              Get Your $950 Site Started
+            </Button>
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }
