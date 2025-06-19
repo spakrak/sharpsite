@@ -14,7 +14,7 @@ export function Header({ onOpenContactForm }: HeaderProps) {
         <div className="flex-1 flex justify-center">
           <Link href="/" className="flex items-center">
             <Image
-              src="/sharpsite_logo.svg"
+              src="/Sharpsite_logo.svg"
               alt="SharpSite"
               width={140}
               height={42}
