@@ -9,11 +9,11 @@ import { WhatsIncludedSection } from "@/components/sections/WhatsIncludedSection
 import { PortfolioSection } from "@/components/sections/PortfolioSection";
 import { WhyChooseUsSection } from "@/components/sections/WhyChooseUsSection";
 import { ProcessSection } from "@/components/sections/ProcessSection";
-import { SocialProofSection } from "@/components/sections/SocialProofSection";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { FinalCtaSection } from "@/components/sections/FinalCtaSection";
 import { Footer } from "@/components/sections/Footer";
 import { ContactForm } from "@/components/ContactForm";
+import { AboutUsSection } from '../components/sections/AboutUsSection';
 
 export default function Home() {
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
@@ -27,10 +27,10 @@ export default function Home() {
 
       <main>
         <HeroSection onOpenContactForm={openContactForm} />
-        <ProblemSolutionSection />
+        <ProblemSolutionSection onOpenContactForm={openContactForm} />
         <WhatsIncludedSection onOpenContactForm={openContactForm} />
-        <PortfolioSection />
-        <WhyChooseUsSection />
+        <PortfolioSection onOpenContactForm={openContactForm} />
+        <AboutUsSection />
         <ProcessSection />
         <FaqSection />
         <FinalCtaSection onOpenContactForm={openContactForm} />

@@ -11,22 +11,22 @@ export function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             {/* Brand & Tagline */}
             <div className="text-center md:text-left">
-              <h3 className="text-xl font-bold mb-2">SharpSite</h3>
+              <h3 className="text-xl font-bold mb-2">Sharpsite</h3>
               <p className="text-gray-300 text-sm">
-                Modern websites, made simple
+                Look Legit. Get More Calls.
               </p>
             </div>
-            
+
             {/* Contact Info */}
             <div className="flex flex-col sm:flex-row gap-4 text-sm">
-              <a 
-                href="mailto:hello@sharpsite.com"
+              <a
+                href="mailto:sharpsiteus@gmail.com"
                 className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
               >
                 <Mail className="h-4 w-4" />
-                <span>hello@sharpsite.com</span>
+                <span>sharpsiteus@gmail.com</span>
               </a>
-              <a 
+              <a
                 href="tel:+15551234567"
                 className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
               >
@@ -34,23 +34,16 @@ export function Footer() {
                 <span>(555) 123-4567</span>
               </a>
             </div>
-            
-            {/* Quick Links */}
-            <div className="text-sm">
-              <Link href="/portfolio" className="text-gray-300 hover:text-white transition-colors">
-                Portfolio
-              </Link>
-            </div>
           </div>
-          
+
           {/* Bottom Bar */}
           <div className="border-t border-gray-800 mt-6 pt-6 text-center">
             <p className="text-gray-400 text-sm">
-              &copy; 2025 SharpSite. All rights reserved.
+              &copy; 2025 Sharpsite. All rights reserved.
             </p>
           </div>
         </div>
       </div>
     </footer>
-  )
+  );
 }

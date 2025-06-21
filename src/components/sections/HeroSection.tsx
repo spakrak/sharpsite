@@ -21,7 +21,7 @@ export function HeroSection({ onOpenContactForm }: HeroSectionProps) {
           </h1>
 
           <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Fast turnaround. Flat fee. Website upkeep optional.
+            Live in 7 days. No contracts. Ongoing support if you want it.
           </p>
 
           <p className="text-lg text-gray-500 mb-10">
@@ -34,7 +34,7 @@ export function HeroSection({ onOpenContactForm }: HeroSectionProps) {
               className="text-lg px-8 py-3 hover:scale-105 transition-transform shadow-lg"
               onClick={onOpenContactForm}
             >
-              Get Your Free Quote
+              Get Started
             </Button>
           </div>
         </div>

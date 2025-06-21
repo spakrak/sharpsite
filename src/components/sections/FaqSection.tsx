@@ -16,30 +16,37 @@ export function FaqSection() {
 
   const faqs = [
     {
-      question: "How long does it take to build my website?",
-      answer: "Most websites are completed within 5-7 business days. We'll give you a specific timeline during your free consultation based on your project's complexity."
+      question: "What happens if the site breaks?",
+      answer:
+        "If you're not on the care plan, you're on your own. That means Googling fixes, and wasting hours trying to figure out backend settings — while your site’s down and you're missing calls. With the care plan, we fix issues fast so your site stays online and you can stay focused on running your business, not troubleshooting tech. Most clients stay on for exactly that reason.",
     },
     {
-      question: "What do I need to provide to get started?",
-      answer: "Just your business information, any existing logos or photos you'd like to use, and a brief description of what you want your website to accomplish. We'll guide you through everything else."
+      question: "Can I update it myself later?",
+      answer:
+        "You could — but most business owners don’t want to mess with website tools. That’s exactly why the care plan exists: you send us what you want changed, and we handle it.",
     },
     {
-      question: "Will my website work on mobile phones?",
-      answer: "Absolutely! Every website we build is designed to work perfectly on phones, tablets, and desktop computers. Mobile-friendly design is included in every project."
+      question: "How do you know what to write about my business?",
+      answer:
+        "We don’t need content from you — we just ask a few questions, then write everything ourselves. No writing, no formatting, no hassle.",
     },
     {
-      question: "What happens after my website is complete?",
-      answer: "You'll receive 6 months of free support for any questions or minor updates. We also provide training on how to update your content and offer ongoing maintenance plans if needed."
+      question:
+        "Why should I choose you over my cousin or freelancer on Facebook?",
+      answer:
+        "Because we’re not just building you a site — we’re building your credibility. We make sure your business looks professional, shows up on Google, and brings in real calls. Cheap websites often break, load slow, or vanish when you need help. Ours are built to work — and we stick around to keep them working.",
     },
     {
-      question: "Do you really have no hidden fees?",
-      answer: "That's right! The price we quote is the price you pay. No setup fees, no monthly hosting charges for the first year, no surprise add-ons. Complete transparency from start to finish."
+      question: "What if I already have a website?",
+      answer:
+        "Yes — we replace it completely. Most of our clients come to us with an old or broken site. We handle the switch, domain, and setup — no extra cost, no effort on your end.",
     },
     {
-      question: "What if I don't like the website?",
-      answer: "We work with you until you're completely satisfied. If for any reason you're not happy with the final result, we offer a full money-back guarantee within 30 days of completion."
-    }
-  ]
+      question: "Will I show up on Google?",
+      answer:
+        "Yes — your site is optimized to show up locally, and we connect it to your Google Business listing. That’s how customers find you without paying for ads.",
+    },
+  ];
 
   return (
     <section className="py-12 lg:py-16 bg-gray-50">
@@ -96,16 +103,16 @@ export function FaqSection() {
               {/* Contact Info within FAQ */}
               <div className="text-center mt-6 pt-6 border-t border-gray-200">
                 <div className="flex items-center justify-center gap-2 mb-4">
-                  <p className="text-gray-700 font-medium">Still have questions? Get in touch!</p>
+                  <p className="text-gray-700 font-medium">Still have questions? We're here to help!</p>
                 </div>
                 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
                   <a 
-                    href="mailto:hello@sharpsite.com"
+                    href="mailto:sharpsiteus@gmail.com"
                     className="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"
                   >
                     <Mail className="h-4 w-4 text-blue-600" />
-                    <span className="font-medium">hello@sharpsite.com</span>
+                    <span className="font-medium">sharpsiteus@gmail.com</span>
                   </a>
                   
                   <a 
@@ -113,13 +120,9 @@ export function FaqSection() {
                     className="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"
                   >
                     <Phone className="h-4 w-4 text-blue-600" />
-                    <span className="font-medium">(555) 123-4567</span>
+                    <span className="font-medium">(412) 715-4869</span>
                   </a>
                 </div>
-                
-                <p className="text-gray-500 text-sm mt-3">
-                  We typically respond within 2 hours during business hours
-                </p>
               </div>
             </div>
           </div>
@@ -127,9 +130,6 @@ export function FaqSection() {
           {/* Summary when collapsed */}
           {!isExpanded && (
             <div className="text-center mt-6">
-              <p className="text-gray-600 text-sm">
-                Get answers about timeline, pricing, mobile design, support, and our guarantee
-              </p>
             </div>
           )}
         </div>

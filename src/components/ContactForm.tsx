@@ -1,71 +1,94 @@
 // src/components/ContactForm.tsx
-"use client"
+"use client";
 
-import { useState } from 'react'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { X, Phone, Mail, MessageCircle } from 'lucide-react'
+import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { X, CheckCircle } from "lucide-react";
 
 interface ContactFormProps {
-  isOpen: boolean
-  onClose: () => void
+  isOpen: boolean;
+  onClose: () => void;
 }
 
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+
 export function ContactForm({ isOpen, onClose }: ContactFormProps) {
+  // Lock scroll on open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    business: '',
-    website: '',
-    message: ''
-  })
-  
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
+    name: "",
+    email: "",
+    phone: "",
+    business: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false)
-      setIsSubmitted(true)
-      // Reset form after 3 seconds
-      setTimeout(() => {
-        setIsSubmitted(false)
+    e.preventDefault();
+    setIsSubmitting(true);
+    const data = new FormData();
+    Object.entries(formData).forEach(([k, v]) => data.append(k, v));
+
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" },
+      });
+
+      if (res.ok) {
+        setIsSubmitted(true);
         setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          business: '',
-          website: '',
-          message: ''
-        })
-        onClose()
-      }, 3000)
-    }, 1000)
-  }
+          name: "",
+          email: "",
+          phone: "",
+          business: "",
+          message: "",
+        });
+        setTimeout(() => {
+          setIsSubmitted(false);
+          onClose();
+        }, 3000);
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
-  }
-
-  if (!isOpen) return null
+  if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
       <Card className="w-full max-w-md max-h-[90vh] overflow-y-auto">
         <CardHeader>
           <div className="flex items-center justify-between">
             <div>
-              <CardTitle className="text-2xl">Get Your Free Quote</CardTitle>
-              <p className="text-gray-600 mt-2">Tell us about your project</p>
+              <CardTitle className="text-2xl">Let’s Get Started</CardTitle>
+              <p className="mt-2 text-gray-600">
+                Fill this out — we’ll reach out within one business day.
+              </p>
             </div>
             <Button
               variant="ghost"
@@ -77,120 +100,96 @@ export function ContactForm({ isOpen, onClose }: ContactFormProps) {
             </Button>
           </div>
         </CardHeader>
-        
+
         <CardContent>
           {isSubmitted ? (
-            <div className="text-center py-8">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <MessageCircle className="h-8 w-8 text-green-600" />
+            <div className="py-8 text-center">
+              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
+                <CheckCircle className="h-8 w-8 text-green-600" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Thank You!</h3>
-              <p className="text-gray-600 mb-4">
-                We'll get back to you within 24 hours with your free quote.
+              <h3 className="mb-2 text-xl font-semibold">Thank you!</h3>
+              <p className="mb-4 text-gray-600">
+                We’ll be in touch shortly to kick things off.
               </p>
-              <Badge variant="success">Quote Request Submitted</Badge>
+              <Badge variant="success">Form submitted</Badge>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Name */}
               <div>
-                <label className="block text-sm font-medium mb-1">Name *</label>
+                <label className="mb-1 block text-sm font-medium">Name *</label>
                 <input
-                  type="text"
                   name="name"
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Your full name"
+                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
-              
+              {/* Email */}
               <div>
-                <label className="block text-sm font-medium mb-1">Email *</label>
+                <label className="mb-1 block text-sm font-medium">
+                  Email *
+                </label>
                 <input
                   type="email"
                   name="email"
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="your@email.com"
+                  placeholder="you@email.com"
+                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
-              
+              {/* Phone */}
               <div>
-                <label className="block text-sm font-medium mb-1">Phone</label>
+                <label className="mb-1 block text-sm font-medium">Phone</label>
                 <input
                   type="tel"
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="(555) 123-4567"
+                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
-              
+              {/* Business */}
               <div>
-                <label className="block text-sm font-medium mb-1">Business Name *</label>
+                <label className="mb-1 block text-sm font-medium">
+                  Business Name *
+                </label>
                 <input
-                  type="text"
                   name="business"
                   required
                   value={formData.business}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Your business name"
+                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
-              
+              {/* Message */}
               <div>
-                <label className="block text-sm font-medium mb-1">Current Website (if any)</label>
-                <input
-                  type="url"
-                  name="website"
-                  value={formData.website}
-                  onChange={handleChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="https://yourwebsite.com"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium mb-1">Tell us about your project</label>
+                <label className="mb-1 block text-sm font-medium">
+                  Anything else? (optional)
+                </label>
                 <textarea
                   name="message"
+                  rows={3}
                   value={formData.message}
                   onChange={handleChange}
-                  rows={3}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="What kind of website do you need? Any specific features or requirements?"
+                  placeholder="Tell us anything that will help us prepare."
+                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
-              
-              <div className="pt-4">
-                <Button 
-                  type="submit" 
-                  className="w-full" 
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? 'Sending...' : 'Get My Free Quote'}
-                </Button>
-                
-                <div className="flex items-center justify-center gap-4 mt-4 text-sm text-gray-500">
-                  <div className="flex items-center gap-1">
-                    <Mail className="h-4 w-4" />
-                    <span>Free consultation</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Phone className="h-4 w-4" />
-                    <span>No obligation</span>
-                  </div>
-                </div>
-              </div>
+
+              <Button type="submit" className="w-full" disabled={isSubmitting}>
+                {isSubmitting ? "Sending…" : "Send"}
+              </Button>
             </form>
           )}
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }

@@ -9,7 +9,13 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export function ProblemSolutionSection() {
+interface ProblemSolutionSectionProps {
+  onOpenContactForm: () => void;
+}
+
+export function ProblemSolutionSection({
+  onOpenContactForm,
+}: ProblemSolutionSectionProps) {
   const problems = [
     {
       icon: Search,
@@ -68,15 +74,15 @@ export function ProblemSolutionSection() {
 
           {/* Problems */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
-            {problems.map((problem, index) => {
-              const IconComponent = problem.icon;
+            {problems.map((problem, idx) => {
+              const Icon = problem.icon;
               return (
                 <div
-                  key={index}
+                  key={idx}
                   className="text-center p-6 border rounded-lg bg-white shadow-sm hover:shadow-md transition-all"
                 >
                   <div className="mx-auto w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-4">
-                    <IconComponent className="h-8 w-8 text-red-600" />
+                    <Icon className="h-8 w-8 text-red-600" />
                   </div>
                   <h4 className="text-xl font-semibold text-gray-900 mb-2">
                     {problem.title}
@@ -93,21 +99,21 @@ export function ProblemSolutionSection() {
               We fix all three problems — fast.
             </p>
             <p className="text-xl text-gray-700">
-              Your site goes live in 5–7 days. One flat $950.
+              Your site is ready in under a week, for just $950.
             </p>
           </div>
 
           {/* Features */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-14">
-            {features.map((feature, index) => {
-              const IconComponent = feature.icon;
+            {features.map((feature, idx) => {
+              const Icon = feature.icon;
               return (
                 <div
-                  key={index}
+                  key={idx}
                   className="text-center p-6 border rounded-lg bg-gray-50 shadow-sm hover:shadow-md transition-all"
                 >
                   <div className="mx-auto w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-                    <IconComponent className="h-8 w-8 text-blue-600" />
+                    <Icon className="h-8 w-8 text-blue-600" />
                   </div>
                   <h4 className="text-lg font-semibold text-gray-900 mb-1">
                     {feature.title}
@@ -123,9 +129,9 @@ export function ProblemSolutionSection() {
             <Button
               size="lg"
               className="text-lg px-8 py-3 hover:scale-105 transition-transform shadow-lg"
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              onClick={onOpenContactForm}
             >
-              Get Your $950 Site Started
+              Get Started
             </Button>
           </div>
         </div>

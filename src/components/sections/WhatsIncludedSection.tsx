@@ -8,6 +8,7 @@ import {
   Clock,
   RefreshCcw,
   Server,
+  Wrench,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -20,7 +21,7 @@ export function WhatsIncludedSection({
   onOpenContactForm,
 }: WhatsIncludedSectionProps) {
   /* ----------------------------------
-   Core $950 Package – 6 benefits
+     Core $950 Package – 6 benefits
   ---------------------------------- */
   const coreFeatures = [
     {
@@ -33,19 +34,19 @@ export function WhatsIncludedSection({
       icon: Smartphone,
       title: "Works on Every Phone",
       description:
-        "70% of your customers are on mobile. Your site will load fast and look perfect.",
+        "70 % of your customers are on mobile. Your site will load fast and look perfect.",
     },
     {
       icon: ClipboardList,
       title: "Contact Forms",
       description:
-        "Built in contact/quote forms to land new customers and get jobs started fast.",
+        "Built-in quote forms that land new customers and get jobs started fast.",
     },
     {
       icon: Edit3,
       title: "We Write Everything",
       description:
-        "Tell us about your business. We'll write words that make people trust you and want to hire you.",
+        "Tell us about your business. We'll write copy that makes people trust you and pick up the phone.",
     },
     {
       icon: Shield,
@@ -57,36 +58,28 @@ export function WhatsIncludedSection({
       icon: Clock,
       title: "Live Next Week",
       description:
-        "While competitors wait months, you'll be getting new customers in 5-7 days.",
+        "Competitors wait months. You'll be getting new customers in 5–7 days.",
     },
   ];
 
   /* ----------------------------------
-   Optional $50/mo Care Plan
+     $50/mo Site Care Plan - Compact Icons
   ---------------------------------- */
-  const carePlan = [
-    {
-      icon: Edit3,
-      title: "We Update Everything",
-    },
-    {
-      icon: Server,
-      title: "We Keep It Running",
-    },
-    {
-      icon: RefreshCcw,
-      title: "We Handle All Tech",
-    },
+  const carePlanIcons = [
+    { icon: RefreshCcw, title: "Text Us Edits — We Do the Rest" }, // “Don't lift a finger” vibe
+    { icon: Server, title: "No Hosting, Domain, or Tech Headaches" }, // Emphasizes invisible tech burden
+    { icon: Wrench, title: "Fast Fixes if Anything Breaks" }, // Punchy, specific, not vague "support"
   ];
+  
 
   return (
     <section className="py-16 lg:py-24 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Heading */}
-          <header className="text-center mb-12">
+          <header className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Everything You Need for $950
+              Everything You Need for&nbsp;$950
             </h2>
             <p className="text-xl text-gray-600">
               Stop losing customers to businesses with websites. Get online
@@ -95,7 +88,7 @@ export function WhatsIncludedSection({
           </header>
 
           {/* Core Features Grid */}
-          <ul className="mx-auto max-w-5xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
+          <ul className="mx-auto max-w-5xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {coreFeatures.map(({ icon: Icon, title, description }) => (
               <li
                 key={title}
@@ -112,38 +105,42 @@ export function WhatsIncludedSection({
             ))}
           </ul>
 
-          {/* Mini reassurance line */}
-          <p className="text-lg text-gray-800 font-medium text-center mb-14">
-            One price. No surprises. Everything done for you.
-          </p>
+          {/* Care Plan Callout - Moved Above Features */}
+          <div className="max-w-4xl mx-auto mb-12">
+            <p className="text-center text-lg text-gray-800 font-bold mb-4">
+              Hate tech struggles? Most clients add the Care Plan because they
+              don’t want to mess with hosting, edits, or fixing things when they
+              break.
+            </p>
 
-          {/* Care Plan Upsell - Positioned as the Smart Choice */}
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-blue-200 p-8 rounded-lg shadow-md max-w-3xl mx-auto mb-14">
-            <div className="text-center mb-6">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                Never Think About Your Website Again
-              </h3>
-              <p className="text-lg text-gray-700">
-                Website Care Plan — Just $50/month
-              </p>
+            <div className="relative bg-white border-2 border-blue-200 rounded-lg p-6 shadow-sm">
+              <div className="pt-2">
+                <div className="text-center mb-4">
+                  <h3 className="text-xl font-bold text-gray-900 mb-1">
+                    Site Care Plan — $50/month
+                  </h3>
+                  <p className="text-gray-700 font-medium">
+                    You own your site. We keep it running.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl mx-auto mt-6">
+                  {carePlanIcons.map(({ icon: Icon, title }) => (
+                    <div
+                      key={title}
+                      className="flex flex-col items-center text-center"
+                    >
+                      <div className="inline-flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 mb-2">
+                        <Icon className="h-6 w-6 text-blue-600" />
+                      </div>
+                      <p className="text-sm font-medium text-gray-800">
+                        {title}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
-
-            <ul className="flex flex-col sm:flex-row sm:justify-center gap-6 text-gray-800 font-medium mb-6">
-              {carePlan.map(({ icon: Icon, title }) => (
-                <li key={title} className="flex items-center gap-2">
-                  <Icon className="h-5 w-5 text-blue-600" />
-                  <span className="text-sm">{title}</span>
-                </li>
-              ))}
-            </ul>
-
-            <p className="text-center text-gray-700 font-medium">
-              Most business owners choose this because dealing with website
-              stuff is a headache.
-            </p>
-            <p className="text-center text-gray-600 text-sm mt-2">
-              Cancel anytime. But you probably won't want to.
-            </p>
           </div>
 
           {/* CTA */}
@@ -153,11 +150,8 @@ export function WhatsIncludedSection({
               onClick={onOpenContactForm}
               className="px-12 py-4 text-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
             >
-              Get My Website This Week
+              Build My Website
             </Button>
-            <p className="text-sm text-gray-600 mt-3">
-              $950 one-time. Add care plan later if you want.
-            </p>
           </div>
         </div>
       </div>
