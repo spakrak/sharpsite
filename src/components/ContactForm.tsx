@@ -12,7 +12,7 @@ interface ContactFormProps {
   onClose: () => void;
 }
 
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/mkgbvvpz";
 
 export function ContactForm({ isOpen, onClose }: ContactFormProps) {
   // Lock scroll on open
