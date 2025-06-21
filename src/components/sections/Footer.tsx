@@ -27,11 +27,11 @@ export function Footer() {
                 <span>sharpsiteus@gmail.com</span>
               </a>
               <a
-                href="tel:+15551234567"
+                href="tel:+14127154869"
                 className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
               >
                 <Phone className="h-4 w-4" />
-                <span>(555) 123-4567</span>
+                <span>(412) 715-4869</span>
               </a>
             </div>
           </div>
