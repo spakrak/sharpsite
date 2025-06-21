@@ -23,7 +23,7 @@ export default function IntakePage() {
         <div className="container mx-auto px-4">
           <div className="flex justify-center items-center h-16">
               <Image
-                src="/sharpsite_logo.svg"
+                src="/Sharpsite_logo.svg"
                 alt="SharpSite"
                 width={140}
                 height={42}
